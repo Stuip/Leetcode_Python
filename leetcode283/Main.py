@@ -22,7 +22,7 @@ class Solution:
             k -= 1
         """
         # 双指针
-        index = 0
+        index = 0   # 指向存放非零元素的索引
         for value in nums:
             if value != 0:
                 nums[index] = value
