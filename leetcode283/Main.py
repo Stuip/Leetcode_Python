@@ -5,7 +5,7 @@ class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
-        """
+
         k = 0
         for value in nums:    ## 记录几个0的数
             if value == 0:
@@ -17,6 +17,16 @@ class Solution:
                 nums[j] = nums[i]
                 j += 1
             i += 1
-        while k > 0:         # 再将后面的有k个数置为0
+        while k > 0:
             nums[k*-1] = 0
             k -= 1
+        """
+        # 双指针
+        index = 0
+        for value in nums:
+            if value != 0:
+                nums[index] = value
+                index += 1
+        while index < len(nums):
+            nums[index] = 0
+            index += 1
