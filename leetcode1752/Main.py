@@ -1,17 +1,12 @@
 class Solution:
     def check(self, nums):
-        sorted_nums = sorted(nums)
-        index = 0
-        while index < len(nums) - 1:
-            if nums[index + 1] < nums[index]:
-                break
-            index += 1
-        if index == len(nums) - 2:  # 说明是排序好的列表
-            return True
-        nums = nums[index + 1:] + nums[:index + 1]
-        for i in range(len(nums)):
-            if sorted_nums[i] != nums[i]:
-                return False
+        flag = nums[0] >= nums[len(nums) - 1]  # 是否有轮转
+        for index in range(1,len(nums)):
+            if nums[index] < nums[index-1]:
+                if flag:
+                    flag = False
+                else:
+                    return False
         return True
 
 
